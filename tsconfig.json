@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(platform)/layout.jsx", "app/(platform)/(clerk)/layout.jsx", "app/(platform)/(dashboard)/layout.jsx"],
   "exclude": ["node_modules"]
 }
