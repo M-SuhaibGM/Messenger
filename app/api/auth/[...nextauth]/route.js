@@ -3,8 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { db } from "../../../../lib/db"
-
+import { db } from "@/lib/db";
 
 export const authOptions = {
   adapter: PrismaAdapter(db),
@@ -20,7 +19,7 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials.email || !credentials.password) {
+        if (!credentials?.email || !credentials?.password) {
           throw new Error("Email and password are required");
         }
 
@@ -28,7 +27,7 @@ export const authOptions = {
           where: { email: credentials.email },
         });
 
-        if (!user) {
+        if (!user || !user.password) {
           throw new Error("User not found");
         }
 
@@ -46,11 +45,11 @@ export const authOptions = {
     }),
   ],
   debug: process.env.NODE_ENV === "development",
-
   session: {
+    maxAge: 30 * 24 * 60 * 60, // 30 days
     strategy: "jwt",
-  },
 
+  },
   secret: process.env.NEXTAUTH_SECRET,
 };
 
