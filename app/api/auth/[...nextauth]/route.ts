@@ -9,8 +9,8 @@ export const authOptions = {
   adapter: PrismaAdapter(db),
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     }),
     CredentialsProvider({
       name: "Credentials",
@@ -47,7 +47,7 @@ export const authOptions = {
   debug: process.env.NODE_ENV === "development",
   session: {
     maxAge: 30 * 24 * 60 * 60, // 30 days
-    strategy: "jwt",
+    strategy: "jwt" as "jwt",
 
   },
   secret: process.env.NEXTAUTH_SECRET,
