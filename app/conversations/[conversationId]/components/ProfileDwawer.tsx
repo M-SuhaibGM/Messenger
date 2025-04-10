@@ -53,7 +53,7 @@ const ProfileDrawer = async ({ data, isClose, isOpen }: Props) => {
             return `${data.users.length} members`
         }
         return isActive ? 'Active' : 'Offline';
-    }, [data])
+    }, [data,isActive])
 
     const joinedDate = useMemo(() => {
         return format(new Date(data.createdAt), 'PP') // Changed 'pp' to 'PP'

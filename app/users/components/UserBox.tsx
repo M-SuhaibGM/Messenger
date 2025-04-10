@@ -20,7 +20,7 @@ const UserBox = ({ data }: Props) => {
                 router.push(`/conversations/${data.data.id}`)
             })
             .finally(() => setisLoading(false))
-    }, [])
+    }, [data.id, router])
     return (
         <>
             {isLoading && <LoadingModel />}
@@ -36,7 +36,7 @@ const UserBox = ({ data }: Props) => {
                             </p>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
 
         </>
