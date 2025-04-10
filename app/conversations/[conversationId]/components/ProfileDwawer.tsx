@@ -33,7 +33,7 @@ interface Props {
     isOpen: boolean
 }
 
-const ProfileDrawer = async ({ data, isClose, isOpen }: Props) => {
+const ProfileDrawer =  ({ data, isClose, isOpen }: Props) => {
     const [loading, setloading] = useState(false)
     const otherUser = useOtherUser(data)
     const { conversationId } = useConversation()
