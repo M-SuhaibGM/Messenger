@@ -1,5 +1,5 @@
 // lib/auth.ts
-import type { NextAuthOptions, Session } from "next-auth";
+import type { NextAuthOptions,} from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
@@ -76,7 +76,7 @@ export const authOptions: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: "/auth/signin",
+    signIn: "/",
     error: "/auth/error",
   },
 };
